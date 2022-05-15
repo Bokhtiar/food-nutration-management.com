@@ -28,6 +28,8 @@ class RedirectIfAuthenticated
                     return redirect()->route('admin.dashboard');
                 }elseif(Auth::check()&&Auth::user()->role->id==2){
                     return redirect()->route('user.dashboard');
+                }else{
+                    return $next($request);
                 }
 
             }
