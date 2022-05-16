@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\News;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
@@ -14,7 +15,8 @@ class NewsController extends Controller
      */
     public function index()
     {
-
+        $news = News::all();
+        return view('admin.news.index', compact('news'));
     }
 
     /**
@@ -35,7 +37,21 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $image = array();
+        if ($request->hasFile('image')) {
+            foreach ($request->image as $key => $photo) {
+                $path = $photo->store('news/photos');
+                array_push($image, $path);
+            }
+
+        }
+        $news = News::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'image' => json_encode($image),
+        ]);
+        return redirect()->route('admin.news.index')->with('success', 'News Added SuccessFully..!');
     }
 
     /**

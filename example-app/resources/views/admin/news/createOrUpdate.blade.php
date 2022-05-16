@@ -18,8 +18,16 @@
 
         <div class="card">
             <div class="card-body">
-              <form action="@route('admin.news.store')" method="POST" enctype="multipart/form-data">
-                <h5 class="card-title">News Create Form</h5>
+
+                @if (@$edit)
+                <form action="@route('admin.news.update', $edit->id)" method="POST" enctype="multipart/form-data">
+                    @method('put')
+                @else
+                <form action="@route('admin.news.store')" method="POST" enctype="multipart/form-data">
+                    @method('POST')
+                @endif
+                @csrf
+                <h5 class="card-title">{{ @$edit ? 'News Update Form' : 'News Create Form'}}</h5>
 
                 <div class="form-gorup my-2">
                     <label for="">News Title <span class="text-danger">*</span></label>
@@ -28,12 +36,19 @@
 
                 <div class="form-gorup my-2">
                   <label for="">News Image <span class="text-danger">*</span></label>
-                  <input type="file" class="form-control" name="image" required value="">
-              </div>
+                  <input type="file" class="form-control" name="image[]" multiple required value="">
+                </div>
 
-                <!-- Editor -->
-                <textarea class="tinymce-editor">
+                <div class="form-gorup">
+                <label for="">News Description <span class="text-danger">*</span></label>
+                    <!-- Editor -->
+                <textarea name="description" class="tinymce-editor">
                 </textarea><!-- End Editor -->
+                </div>
+
+                <div class="form-group my-2 float-right">
+                    <input type="submit" value="Create News" class="btn btn-info text-light" id="">
+                </div>
               </form>
 
             </div>
