@@ -37,12 +37,26 @@
                 <div class="form-gorup my-2">
                   <label for="">News Image <span class="text-danger">*</span></label>
                   <input type="file" class="form-control" name="image[]" multiple required value="">
+                  @if (@$edit)
+                    <span>Already Selected Image :
+                        @php
+                        $image = json_decode(@$edit->image);
+                        @endphp
+
+                        @if(empty($image))
+                            <td>Image Not Selected</td>
+                        @else
+                            <img src="{{asset($image[0])}}" height="100px" width="100px" alt="">
+                        @endif
+                    </span>
+                  @endif
                 </div>
 
                 <div class="form-gorup">
                 <label for="">News Description <span class="text-danger">*</span></label>
                     <!-- Editor -->
                 <textarea name="description" class="tinymce-editor">
+                    {!! @$edit->description !!}
                 </textarea><!-- End Editor -->
                 </div>
 

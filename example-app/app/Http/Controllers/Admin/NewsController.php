@@ -15,7 +15,7 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $news = News::all();
+        $news = News::latest()->get(['id', 'title', 'image', 'status']);
         return view('admin.news.index', compact('news'));
     }
 
@@ -44,8 +44,8 @@ class NewsController extends Controller
                 $path = $photo->store('news/photos');
                 array_push($image, $path);
             }
-
         }
+
         $news = News::create([
             'title' => $request->title,
             'description' => $request->description,
@@ -62,7 +62,8 @@ class NewsController extends Controller
      */
     public function show($id)
     {
-        //
+        $show = News::find($id);
+        return view('admin.news.show', compact('show'));
     }
 
     /**
@@ -73,7 +74,8 @@ class NewsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $edit = News::find($id);
+        return view('admin.news.createOrUpdate', compact('edit'));
     }
 
     /**
@@ -85,7 +87,24 @@ class NewsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $update = News::find($id);
+        $update->title = $request->title;
+        $update->description = $request->description;
+        if($request->image){
+            $image = array();
+            if ($request->hasFile('image')) {
+                foreach ($request->image as $key => $photo) {
+                    $path = $photo->store('news/photos');
+                    array_push($image, $path);
+                }
+                $update->image = json_encode($image);
+            }
+        }else{
+            $update->image = $update->image;
+        }
+        $update->save();
+        return redirect()->route('admin.news.index')->with('info', 'News Updated SuccessFully..!');
     }
 
     /**
@@ -96,6 +115,7 @@ class NewsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        News::find($id)->delete();
+        return redirect()->route('admin.news.index')->with('success', 'News Deleted SuccessFully..!');
     }
 }
