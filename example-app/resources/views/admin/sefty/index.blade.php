@@ -49,9 +49,9 @@
                         @endif
                     </td>
                     <td class="form-inline">
-                        <a class="btn btn-sm btn-info text-light" href="@route('admin.news.show', $item->id)"><i class="bi bi-eye"></i></a>
-                        <a class="btn btn-sm btn-success text-light" href="@route('admin.news.edit', $item->id)"> <i class="bi bi-pencil-square"></i> </a>
-                        <form method="POST" action="@route('admin.news.destroy', $item->id)">
+                        <a class="btn btn-sm btn-info text-light" href="@route('admin.seafty.show', $item->id)"><i class="bi bi-eye"></i></a>
+                        <a class="btn btn-sm btn-success text-light" href="@route('admin.seafty.edit', $item->id)"> <i class="bi bi-pencil-square"></i> </a>
+                        <form method="POST" action="@route('admin.seafty.destroy', $item->id)">
                             @method('DELETE')
                             @csrf
                             <button type="submit" class="btn btn-sm btn-danger"><i class="bi bi-x-square"></i></button>

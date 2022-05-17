@@ -61,7 +61,8 @@ class SeftyController extends Controller
      */
     public function show($id)
     {
-        //
+        $show = sefty::find($id);
+        return view('admin.sefty.show', compact('show'));
     }
 
     /**
@@ -72,7 +73,9 @@ class SeftyController extends Controller
      */
     public function edit($id)
     {
-        //
+
+        $edit = sefty::find($id);
+        return view('admin.sefty.createOrUpdate', compact('edit'));
     }
 
     /**
@@ -84,7 +87,23 @@ class SeftyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $update = sefty::find($id);
+        $update->title = $request->title;
+        $update->description = $request->description;
+        if($request->image){
+            $image = array();
+            if ($request->hasFile('image')) {
+                foreach ($request->image as $key => $photo) {
+                    $path = $photo->store('news/photos');
+                    array_push($image, $path);
+                }
+                $update->image = json_encode($image);
+            }
+        }else{
+            $update->image = $update->image;
+        }
+        $update->save();
+        return redirect()->route('admin.seafty.index')->with('info', 'Seafty Updated SuccessFully..!');
     }
 
     /**
@@ -95,6 +114,7 @@ class SeftyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        sefty::find($id)->delete();
+        return redirect()->route('admin.seafty.index')->with('success', 'Seafty Deleted SuccessFully..!');
     }
 }
