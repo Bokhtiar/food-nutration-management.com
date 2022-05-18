@@ -17,7 +17,7 @@
             <a class="nav-link" href="@route('health')">Health</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/food.html">Food Safety</a>
+            <a class="nav-link" href="@route('food-seafty')">Food Safety</a>
         </li>
 
         <li class="nav-item dropdown">

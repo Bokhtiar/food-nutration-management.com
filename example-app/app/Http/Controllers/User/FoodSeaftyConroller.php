@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\sefty;
 use Illuminate\Http\Request;
 
 class FoodSeaftyConroller extends Controller
@@ -14,7 +15,8 @@ class FoodSeaftyConroller extends Controller
      */
     public function index()
     {
-        //
+        $seafties = sefty::all();
+        return view('user.foodSeafty.index', compact('seafties'));
     }
 
     /**
@@ -46,7 +48,8 @@ class FoodSeaftyConroller extends Controller
      */
     public function show($id)
     {
-        //
+        $show = sefty::find($id);
+        return view('user.foodSeafty.show', compact('show'));
     }
 
     /**
