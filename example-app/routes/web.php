@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BMIController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\SeftyController;
 use Illuminate\Support\Facades\Auth;
@@ -34,4 +35,5 @@ Route::group(["as"=>'admin.', "prefix"=>'admin', "middleware"=>['auth','admin']]
     Route::get('logout', [App\Http\Controllers\Admin\AdminDashboardController::class, 'logout'])->name('logout');
     Route::resource('news', NewsController::class);
     Route::resource('seafty', SeftyController::class);
+    Route::resource('bmi', BMIController::class);
 });
