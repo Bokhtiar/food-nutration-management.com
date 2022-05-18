@@ -73,21 +73,24 @@
                 <section>
                     @foreach ($news as $item)
                     <div class="row">
-                        <div class="col-md-4 col-lg-4 col-sm-12">
-                            @php
-                            $image = json_decode(@$item->image);
-                            @endphp
 
-                            @if(empty($image))
-                                <td>Image Not Selected</td>
-                            @else
-                            <img src="{{asset($image[0])}}" height="60px" width="100%" alt="">
-                            @endif
+                            <div class="col-md-4 col-lg-4 col-sm-12">
+                                @php
+                                $image = json_decode(@$item->image);
+                                @endphp
 
-                        </div>
-                        <div class="col-md-8 col-lg-8 col-sm-12">
-                            <p>{{ $item->title }}</p>
-                        </div>
+                                @if(empty($image))
+                                    <td>Image Not Selected</td>
+                                @else
+                                <img src="{{asset($image[0])}}" height="60px" width="100%" alt="">
+                                @endif
+
+                            </div>
+                            <div class="col-md-8 col-lg-8 col-sm-12">
+                                <p><a href="@route('news/show', $item->id)">{{ $item->title }}</a>
+                                </p>
+                            </div>
+
                     </div>
                     <hr>
                     @endforeach
