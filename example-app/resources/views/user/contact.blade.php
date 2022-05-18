@@ -1,7 +1,7 @@
 @extends('layouts.user.app')
 @section('title', 'Contact')
 @section('user_content')
-
+    <x-notification></x-notification>
  <!--about start here-->
  <section class="container my-5">
     <div class="row">
@@ -33,26 +33,31 @@
               Contact Form
             </div>
           </div>
-          <div class="card-body">
-            <div class="form-group">
-              <label for="">Type Here Name <span class="text-danger">*</span></label>
-              <input type="text" class="form-control" name="name" placeholder="type here name" id="">
-            </div>
+        <div class="card-body">
+              <form action="@route('contact.store')" method="POST">
+                  @csrf
 
-            <div class="form-group">
-              <label for="">Type Here E-mail <span class="text-danger">*</span></label>
-              <input type="email" class="form-control" name="email" placeholder="type here email" id="">
-            </div>
+                <div class="form-group">
+                <label for="">Type Here Name <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" name="name" placeholder="type here name" id="">
+                </div>
 
-            <div class="form-group">
-              <label for="">Type Here Text <span class="text-danger">*</span></label>
-              <textarea placeholder="body" name="body" id="" cols="10" rows="4" class="form-control"></textarea>
-            </div>
+                <div class="form-group">
+                <label for="">Type Here E-mail <span class="text-danger">*</span></label>
+                <input type="email" class="form-control" name="email" placeholder="type here email" id="">
+                </div>
 
-            <div class="form-group">
-              <input type="submit" class="btn btn-outline-success btn-submit" value="submit" name="" id="">
-            </div>
-          </div>
+                <div class="form-group">
+                <label for="">Type Here Text <span class="text-danger">*</span></label>
+                <textarea placeholder="body" name="message" id="" cols="10" rows="4" class="form-control"></textarea>
+                </div>
+
+                <div class="form-group">
+                <input type="submit" class="btn btn-outline-success btn-submit" value="submit" name="" id="">
+                </div>
+            </form>
+        </div>
+
         </div>
       </div>
       <div class="col-md-8 col-lg-8 col-sm-12 ">
