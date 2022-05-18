@@ -1,5 +1,5 @@
 @extends('layouts.admin.app')
-@section('title', 'Seafty Create Page')
+@section('title', 'BMI Create')
     @section('css')
     @endsection
 
@@ -32,14 +32,14 @@
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                         <div class="form-gorup my-2">
-                            <label for="">Weight <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" name="weight" required value="{{ @$edit->weight }}" placeholder="weight" id="">
+                            <label for="">Start <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="start" required value="{{ @$edit->start }}" placeholder="start" id="">
                         </div>
                     </div>
                     <div class="col-12 col-sm-12 col-md-6 col-lg-6">
                         <div class="form-gorup my-2">
-                            <label for="">Height <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" name="height" required value="{{ @$edit->height }}" placeholder="height" id="">
+                            <label for="">end <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="end" required value="{{ @$edit->end }}" placeholder="end" id="">
                         </div>
                     </div>
                 </div>

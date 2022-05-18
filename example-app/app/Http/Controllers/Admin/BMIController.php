@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\BMI;
 use Illuminate\Http\Request;
 
 class BMIController extends Controller
@@ -14,7 +15,8 @@ class BMIController extends Controller
      */
     public function index()
     {
-        //
+        $bmis = BMI::get(['id', 'start', 'end']);
+        return view('admin.bmi.index', compact('bmis'));
     }
 
     /**
@@ -24,7 +26,7 @@ class BMIController extends Controller
      */
     public function create()
     {
-        return view('admin.bmi.create');
+        return view('admin.bmi.createOrUpdate');
     }
 
     /**
@@ -35,7 +37,8 @@ class BMIController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        BMI::create($request->all());
+        return redirect()->route('admin.bmi.index')->with('success', 'Successfully Added...!!!');
     }
 
     /**
@@ -46,7 +49,8 @@ class BMIController extends Controller
      */
     public function show($id)
     {
-        //
+        $show = BMI::find($id);
+        return view('admin.bmi.show',compact('show'));
     }
 
     /**

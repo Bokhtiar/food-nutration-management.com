@@ -15,6 +15,9 @@ class CreateBMISTable extends Migration
     {
         Schema::create('b_m_i_s', function (Blueprint $table) {
             $table->id();
+            $table->string('start');
+            $table->string('end');
+            $table->longText('description');
             $table->timestamps();
         });
     }

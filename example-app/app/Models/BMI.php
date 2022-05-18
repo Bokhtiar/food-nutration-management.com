@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class BMI extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'start', 'end', 'description',
+    ];
 }
