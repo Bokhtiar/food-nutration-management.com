@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\BMIController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\SeftyController;
+use App\Models\News;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +19,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $news = News::all();
+    return view('welcome', compact('news'));
 });
 
 Auth::routes();

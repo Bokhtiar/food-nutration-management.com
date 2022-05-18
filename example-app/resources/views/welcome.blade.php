@@ -71,67 +71,27 @@
             <div class="col-sm-12 col-md-4 col-lg-4">
                 <H3>LATEST NEWS</H3>
                 <section>
-                    <div class="row">
-                            <div class="col-md-4 col-lg-4 col-sm-12">
-                                <img src="imgs/b2.jpg" height="60px" width="100%" alt="">
-                            </div>
-                            <div class="col-md-8 col-lg-8 col-sm-12">
-                                <p>A heath is a shrubland habitat found mainly on free-draining infertile,</p>
-                            </div>
-                    </div>
-                    <hr>
-
+                    @foreach ($news as $item)
                     <div class="row">
                         <div class="col-md-4 col-lg-4 col-sm-12">
-                            <img src="imgs/b1.jpg" height="60px" width="100%" alt="">
+                            @php
+                            $image = json_decode(@$item->image);
+                            @endphp
+
+                            @if(empty($image))
+                                <td>Image Not Selected</td>
+                            @else
+                            <img src="{{asset($image[0])}}" height="60px" width="100%" alt="">
+                            @endif
+
                         </div>
                         <div class="col-md-8 col-lg-8 col-sm-12">
-                            <p>A heath is a shrubland habitat found mainly on free-draining infertile,</p>
+                            <p>{{ $item->title }}</p>
                         </div>
                     </div>
                     <hr>
+                    @endforeach
 
-                    <div class="row">
-                        <div class="col-md-4 col-lg-4 col-sm-12">
-                            <img src="imgs/b3.jpg" height="60px" width="100%" alt="">
-                        </div>
-                        <div class="col-md-8 col-lg-8 col-sm-12">
-                            <p>A heath is a shrubland habitat found mainly on free-draining infertile,</p>
-                        </div>
-                </div>
-                <hr>
-
-                <div class="row">
-                    <div class="col-md-4 col-lg-4 col-sm-12">
-                        <img src="imgs/la.PNG" height="60px" width="100%" alt="">
-                    </div>
-                    <div class="col-md-8 col-lg-8 col-sm-12">
-                        <p>A heath is a shrubland habitat found mainly on free-draining infertile,</p>
-                    </div>
-                </div>
-                <hr>
-
-
-
-                <div class="row">
-                    <div class="col-md-4 col-lg-4 col-sm-12">
-                        <img src="imgs/sf.jpg" height="60px" width="100%" alt="">
-                    </div>
-                    <div class="col-md-8 col-lg-8 col-sm-12">
-                        <p>A heath is a shrubland habitat found mainly on free-draining infertile,</p>
-                    </div>
-            </div>
-            <hr>
-
-            <div class="row">
-                <div class="col-md-4 col-lg-4 col-sm-12">
-                    <img src="imgs/b2.jpg" height="60px" width="100%" alt="">
-                </div>
-                <div class="col-md-8 col-lg-8 col-sm-12">
-                    <p>A heath is a shrubland habitat found mainly on free-draining infertile,</p>
-                </div>
-            </div>
-            <hr>
 
 
 
