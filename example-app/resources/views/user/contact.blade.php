@@ -4,6 +4,15 @@
     <x-notification></x-notification>
  <!--about start here-->
  <section class="container my-5">
+    <h1>Contact</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item">Contact</li>
+        <li class="breadcrumb-item active">Contact </li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
     <div class="row">
       <div class="col-sm-12 col-md-7 col-lg-7">
         <img src="{{ asset('user') }}/imgs/about.jpg" height="200px" width="100%" alt="">

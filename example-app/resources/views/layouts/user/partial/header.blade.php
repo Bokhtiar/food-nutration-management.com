@@ -14,7 +14,7 @@
             <a class="nav-link" href="@route('contact')">Contact</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/health.html">Health</a>
+            <a class="nav-link" href="@route('health')">Health</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/food.html">Food Safety</a>

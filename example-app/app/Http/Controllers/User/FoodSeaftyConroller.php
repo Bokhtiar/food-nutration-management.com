@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\News;
 use Illuminate\Http\Request;
 
-class UserDashboardController extends Controller
+class FoodSeaftyConroller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,7 @@ class UserDashboardController extends Controller
      */
     public function index()
     {
-        return "user dashboard";
+        //
     }
 
     /**
@@ -23,10 +22,9 @@ class UserDashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function health()
+    public function create()
     {
-        $news = News::all();
-        return view('user.health', compact('news'));
+        //
     }
 
     /**

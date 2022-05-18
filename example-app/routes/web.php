@@ -29,7 +29,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/news/show/{id}', [App\Http\Controllers\User\NewsController::class, 'show'])->name('news/show');
 Route::get('contact', [App\Http\Controllers\User\ContactController::class, 'create'])->name('contact');
 Route::post('contact/store', [App\Http\Controllers\User\ContactController::class, 'store'])->name('contact.store');
-
+Route::get('health', [App\Http\Controllers\User\UserDashboardController::class, 'health'])->name('health');
 
 Route::group(["as"=>'user.', "prefix"=>'user',  "middleware"=>['auth','user']],function(){
     Route::get('dashboard', [App\Http\Controllers\User\UserDashboardController::class, 'index'])->name('dashboard');
