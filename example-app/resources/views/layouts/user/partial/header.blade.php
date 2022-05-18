@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg text-light bg-color">
     <section class="container">
-        <a class="navbar-brand text-light" href="/index.html">Nutrition Guide</a>
+        <a class="navbar-brand text-light" href="{{ url('/') }}">Nutrition Guide</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -8,10 +8,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto nav-list">
         <li class="nav-item active">
-          <a class="nav-link" href="/index.html">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="{{ url('/') }}">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/contact.html">Contact</a>
+            <a class="nav-link" href="@route('contact')">Contact</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/health.html">Health</a>
