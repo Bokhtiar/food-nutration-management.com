@@ -18,7 +18,7 @@
 
         <div class="card">
             <div class="card-body">
-
+                <x-notification></x-notification>
                 @if (@$edit)0
                 <form action="@route('admin.bmi.update', $edit->id)" method="POST" enctype="multipart/form-data">
                     @method('put')

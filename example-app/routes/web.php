@@ -36,4 +36,5 @@ Route::group(["as"=>'admin.', "prefix"=>'admin', "middleware"=>['auth','admin']]
     Route::resource('news', NewsController::class);
     Route::resource('seafty', SeftyController::class);
     Route::resource('bmi', BMIController::class);
+    Route::get('profile', [App\Http\Controllers\Admin\AdminDashboardController::class, 'profile'])->name('profile');
 });

@@ -35,9 +35,10 @@ class AdminDashboardController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function profile()
     {
-        //
+        $user = Auth::user();
+        return view('admin.profile', compact('user'));
     }
 
     /**

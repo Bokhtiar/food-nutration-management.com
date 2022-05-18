@@ -61,7 +61,8 @@ class BMIController extends Controller
      */
     public function edit($id)
     {
-        //
+        $edit = BMI::find($id);
+        return view('admin.bmi.createOrUpdate', compact('edit'));
     }
 
     /**
@@ -73,7 +74,9 @@ class BMIController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $bmi = BMI::find($id);
+        $bmi->update($request->all());
+        return redirect()->route('admin.bmi.index')->with('info', 'Update Successfully ...!!!');
     }
 
     /**
@@ -84,6 +87,7 @@ class BMIController extends Controller
      */
     public function destroy($id)
     {
-        //
+        BMI::find($id)->delete();
+        return back()->with('success', 'Deleted Successfully...!!!');
     }
 }
