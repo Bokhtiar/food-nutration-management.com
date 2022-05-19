@@ -33,6 +33,7 @@ Route::get('health', [App\Http\Controllers\User\UserDashboardController::class, 
 Route::get('food-seafty', [App\Http\Controllers\User\FoodSeaftyConroller::class, 'index'])->name('food-seafty');
 Route::get('food-seafty/show/{id}', [App\Http\Controllers\User\FoodSeaftyConroller::class, 'show'])->name('food-seafty.show');
 Route::get('check/fitness', [App\Http\Controllers\User\CheckFitnessController::class, 'index'])->name('check.fitness');
+Route::post('check/fitness/calculate', [App\Http\Controllers\User\CheckFitnessController::class, 'calculate'])->name('check.fitness.calculate');
 
 Route::group(["as"=>'user.', "prefix"=>'user',  "middleware"=>['auth','user']],function(){
     Route::get('dashboard', [App\Http\Controllers\User\UserDashboardController::class, 'index'])->name('dashboard');

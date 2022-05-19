@@ -21,7 +21,8 @@
                     CHECK YOUR FITNESS
                 </div>
                 <div class="card-body">
-                    <form class="form-group" action="">
+                    <form method="POST" class="form-group" action="@route('check.fitness.calculate')">
+                       @csrf
                         <div class="row">
                             <div class="form-group col-md-6">
                                 <label for="">Type Here Weight <span class="text-denger">*</span></label>
@@ -29,12 +30,12 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="">Type Here height <span class="text-denger">*</span></label>
-                                <input type="text" class="form-control" name="height" placeholder="height" required id="">
+                                <input type="text" class="form-control" name="height" placeholder="height(fit)" required id="">
                             </div>
                         </div>
 
                         <div class="text-center">
-                            <a  href="report.html" class="btn btn-outline-success btn-submit" > Check</a>
+                            <input type="submit" name="" class="btn btn-outline-success btn-submit" value="Check">
                         </div>
                     </form>
                 </div>

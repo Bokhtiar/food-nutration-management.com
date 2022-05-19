@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\BMI;
 use Illuminate\Http\Request;
 
 class CheckFitnessController extends Controller
@@ -22,9 +23,21 @@ class CheckFitnessController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function calculate(Request $request)
     {
-        //
+        $height = $request->height;
+        $inc = $height*12;
+        $mitter = $inc * 0.0254;
+        $bmi = $request->weight / ($mitter*$mitter);
+        // dd($bmi);
+        $bmiDB = BMI::all();
+        foreach ($bmiDB as $item) {
+            if($item->start <= $bmi && $item->end >= $bmi){
+                $show  = BMI::find($item->id);
+                return view('user.checkFitness.report', compact('show'));
+            }
+        }
+
     }
 
     /**
