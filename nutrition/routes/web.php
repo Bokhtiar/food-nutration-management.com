@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\BMIController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\SeftyController;
 use App\Models\News;
+use App\Models\sefty;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -20,7 +21,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $news = News::all();
-    return view('welcome', compact('news'));
+    $seaftes = sefty::all();
+    return view('welcome', compact('news', 'seaftes'));
 });
 
 Auth::routes();
@@ -32,7 +34,6 @@ Route::post('contact/store', [App\Http\Controllers\User\ContactController::class
 Route::get('health', [App\Http\Controllers\User\UserDashboardController::class, 'health'])->name('health');
 Route::get('food-seafty', [App\Http\Controllers\User\FoodSeaftyConroller::class, 'index'])->name('food-seafty');
 Route::get('food-seafty/show/{id}', [App\Http\Controllers\User\FoodSeaftyConroller::class, 'show'])->name('food-seafty.show');
-
 
 Route::group(["as"=>'user.', "prefix"=>'user',  "middleware"=>['auth','user']],function(){
     Route::get('dashboard', [App\Http\Controllers\User\UserDashboardController::class, 'index'])->name('dashboard');

@@ -105,52 +105,30 @@
     <!--latest news end here-->
 
     <!--food start here-->
-    <section class="container">
+    <section class="container my-5">
         <h3>FOOD SEAFTY</h3>
         <div class="row">
+
+            @foreach ($seaftes as $s)
             <div class="col-sm-12 col-md-3 col-lg-3">
                 <div class="card" style="width: 14rem;">
-                    <img class="card-img-top" src="imgs/b2.jpg"  height="170px" alt="Card image cap">
+                    @php
+                    $image = json_decode(@$s->image);
+                    @endphp
+
+                    @if(empty($image))
+                        <td>Image Not Selected</td>
+                    @else
+                    <img class="card-img-top"  src="{{asset($image[0])}}"  height="150px" width="100%" alt="Card image cap">
+                    @endif
+
                     <div class="card-body">
-                    <h5 class="card-title">Food Poisoning</h5>
-                    <p class="card-text">What is food poisoning, and how long does it last? Use these resources to learn about food poisoning symptoms, common causes, and what to do if you get sick.</p>
+                    <h5 class="card-title"><p><a href="@route('food-seafty.show', $s->id)">{{ $s->title }}</a>
+                    </p></h5>
                     </div>
                 </div>
             </div>
-
-            <div class="col-sm-12 col-md-3 col-lg-3">
-                <div class="card" style="width: 14rem;">
-                    <img class="card-img-top" src="imgs/b1.jpg"  height="170px" alt="Card image cap">
-                    <div class="card-body">
-                    <h5 class="card-title">Food Safety On the Go</h5>
-                    <p class="card-text">Learn how to safely choose and handle food when getting food delivery, eating out, shopping for groceries, and packing meals and snacks to go.</p>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-sm-12 col-md-3 col-lg-3">
-                <div class="card" style="width: 14rem;">
-                    <img class="card-img-top" src="imgs/b3.jpg" height="170px" alt="Card image cap">
-                    <div class="card-body">
-                    <h5 class="card-title">Safe Food Preparation</h5>
-                    <p class="card-text">Prevent contamination when preparing and serving meals by following these guidelines for cooking temperatures, food handling, and cleaning.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-12 col-md-3 col-lg-3">
-                <div class="card" style="width: 14rem;">
-                    <img class="card-img-top" src="imgs/about.jpg"  height="170px"  alt="Card image cap">
-                    <div class="card-body">
-                    <h5 class="card-title">Safe Food Storage</h5>
-                    <p class="card-text">Follow these tips for safely storing food in the freezer, refrigerator, and pantry to prevent foodborne germs from growing and keep it fresh for longer.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
+            @endforeach
     </section>
     <!--food end here-->
 @endsection
