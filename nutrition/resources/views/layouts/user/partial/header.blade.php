@@ -21,7 +21,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="@route('check.fitness')">Check Fitness</a>
+            <a class="nav-link" href="@route('user.check.fitness')">Check Fitness</a>
         </li>
 
 

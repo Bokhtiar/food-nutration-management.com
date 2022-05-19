@@ -21,7 +21,7 @@
                     CHECK YOUR FITNESS
                 </div>
                 <div class="card-body">
-                    <form method="POST" class="form-group" action="@route('check.fitness.calculate')">
+                    <form method="POST" class="form-group" action="@route('user.check.fitness.calculate')">
                        @csrf
                         <div class="row">
                             <div class="form-group col-md-6">
