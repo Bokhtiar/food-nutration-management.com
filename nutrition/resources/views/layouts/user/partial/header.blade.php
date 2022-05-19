@@ -30,8 +30,12 @@
               Profile
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="login.html">Login</a>
-              <a class="dropdown-item" href="reg.html">Registration</a>
+            @if(Auth::check())
+            <a class="dropdown-item" href="@route('user.logout')">Logout</a>
+            @else
+              <a class="dropdown-item" href="@route('login')">Logout</a>
+              <a class="dropdown-item" href="@route('register')">Register</a>
+            @endif
             </div>
           </li>
       </ul>

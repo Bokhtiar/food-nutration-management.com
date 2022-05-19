@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\News;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserDashboardController extends Controller
 {
@@ -35,9 +36,10 @@ class UserDashboardController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function logout()
     {
-        //
+        Auth::logout();
+        return redirect('/');
     }
 
     /**
